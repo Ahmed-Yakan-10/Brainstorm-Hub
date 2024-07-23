@@ -14,7 +14,10 @@ class BrainStormHub extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(brightness: Brightness.dark,fontFamily: kFont,),
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        fontFamily: kFont,
+      ),
       home: const NotesView(),
     );
   }
