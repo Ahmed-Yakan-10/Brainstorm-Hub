@@ -13,7 +13,7 @@ class BrainStormHub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(brightness: Brightness.dark,fontFamily: kFont,),
       home: const NotesView(),
     );
