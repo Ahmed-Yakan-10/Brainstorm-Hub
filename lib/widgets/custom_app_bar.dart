@@ -1,9 +1,14 @@
 import 'package:brainstorm_hub/constants.dart';
 import 'package:brainstorm_hub/widgets/custom_search_icon.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+  const CustomAppBar({super.key, required this.title, required this.icon, required this.subtitle,});
+
+  final String title;
+  final String subtitle;
+final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +16,14 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Container(height: 50, child: Image.asset(kIcon)),
         SizedBox(width: 5,),
-        Text('Brainstorm',style: TextStyle(
-          color:kPrimaryColor,fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),),
-        SizedBox(width: 5,),
-        Text('Hub',style: TextStyle(
-          color:kSecondaryColor,fontSize: 24,
-          fontWeight: FontWeight.bold,
-        ),),
+        Row(
+           children: [
+             Text(title,),
+             Text(subtitle,),
+           ],
+        ),
         Spacer(),
-        CustomSearchIcon(),
+        CustomIcon(icon: icon,),
       ],
     );
   }
