@@ -18,7 +18,7 @@ class NotesViewBody extends StatelessWidget {
         children: [
           SizedBox(height: 65,),
           CustomAppBar(
-            title: 'Brainstorm',
+            title: 'Brainstorm ',
             subtitle: 'Hub',
             icon: FontAwesomeIcons.search,
           ),

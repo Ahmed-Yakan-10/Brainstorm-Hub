@@ -4,26 +4,47 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.title, required this.icon, required this.subtitle,});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.subtitle,
+  });
 
   final String title;
   final String subtitle;
-final IconData icon;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Container(height: 50, child: Image.asset(kIcon)),
-        SizedBox(width: 5,),
+        SizedBox(
+          width: 5,
+        ),
         Row(
-           children: [
-             Text(title,),
-             Text(subtitle,),
-           ],
+          children: [
+            Text(
+              title,
+              style: TextStyle(
+                color: kPrimaryColor,
+                fontSize: 20,fontWeight: FontWeight.bold,
+              ),
+            ),
+            Text(
+              subtitle,
+              style: TextStyle(
+                color: kSecondaryColor,
+                fontSize: 20,fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
         ),
         Spacer(),
-        CustomIcon(icon: icon,),
+        CustomIcon(
+          icon: icon,
+        ),
       ],
     );
   }
