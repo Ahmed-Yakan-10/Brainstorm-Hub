@@ -2,15 +2,15 @@ import 'package:brainstorm_hub/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({super.key, required this.buttonName, this.onTap});
+  CustomButton({super.key, required this.buttonName, required this.onTap});
 
   String buttonName;
-  VoidCallback? onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap ?? (){},
       child: Container(
         decoration: BoxDecoration(
           color: kPrimaryColor,

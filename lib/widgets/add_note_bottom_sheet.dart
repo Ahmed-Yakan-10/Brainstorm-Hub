@@ -2,6 +2,7 @@ import 'package:brainstorm_hub/constants.dart';
 import 'package:brainstorm_hub/widgets/custom_button.dart';
 import 'package:brainstorm_hub/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -11,55 +12,70 @@ class AddNoteBottomSheet extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 35,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Text(
-                  'Add Note ✍️💭',
-                  style: const TextStyle(
-                    fontFamily: kFont,
-                    color: kSecondaryColor,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextField(
-              hintText: 'Title',
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CustomTextField(
-              hintText: 'Content',
-              maxLines: 4,
-            ),
-            SizedBox(
-              height: 125,
-            ),
-            CustomButton(
-              buttonName: 'Add',
-              onTap: () {},
-            ),
-            SizedBox(
-              height: 20,
-            ),
-          ],
-        ),
+        child: AddNoteForm(),
+      ),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
+  String? title, subTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          SizedBox(
+            height: 45,
+          ),
+          CustomTextField(
+            hintText: 'Title',
+            onSaved: (value) {
+              title = value;
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          CustomTextField(
+            hintText: 'Content',
+            maxLines: 4,
+            onSaved: (value) {
+              subTitle = value;
+            },
+          ),
+          SizedBox(
+            height: 125,
+          ),
+          CustomButton(
+            buttonName: 'Add',
+            onTap: () {
+              print('object');
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {});
+              }
+            },
+          ),
+          SizedBox(
+            height: 20,
+          ),
+        ],
       ),
     );
   }
