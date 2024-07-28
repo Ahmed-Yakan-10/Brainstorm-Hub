@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 
 part 'add_notes_state.dart';
 
-class AddNotesCubit extends Cubit<NotesState> {
+class AddNotesCubit extends Cubit<AddNotesState> {
   AddNotesCubit() : super(AddNotesInitial());
 
   addNote(NoteModel note) async {
@@ -16,7 +16,7 @@ class AddNotesCubit extends Cubit<NotesState> {
       emit(AddNotesSuccess());
       await notesBox.add(note);
     } catch (e) {
-      AddNotesFailure(e.toString());
+      emit(AddNotesFailure(e.toString()));
 
     }
   }
