@@ -1,5 +1,6 @@
 import 'package:brainstorm_hub/cubits/add_note_cubit/add_notes_cubit.dart';
 import 'package:brainstorm_hub/models/note_model.dart';
+import 'package:brainstorm_hub/widgets/colors_list_view.dart';
 import 'package:brainstorm_hub/widgets/custom_button.dart';
 import 'package:brainstorm_hub/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
       child: Column(
         children: [
           SizedBox(
-            height: 45,
+            height: 30,
+          ),
+          SizedBox(
+            height: 64,
+            child: ColorListView(),
+          ),
+          SizedBox(
+            height: 20,
           ),
           CustomTextField(
             hintText: 'Title',
@@ -51,14 +59,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
           BlocBuilder<AddNotesCubit, AddNotesState>(
             builder: (context, state) {
               return CustomButton(
-                isLoading: state is AddNotesLoading ? true:false,
+                isLoading: state is AddNotesLoading ? true : false,
                 onTap: () {
                   print('object');
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     var currentDate = DateTime.now();
                     var formattedCurrentDate =
-                    DateFormat('dd-MM-yyyy').format(currentDate);
+                        DateFormat('dd-MM-yyyy').format(currentDate);
                     var noteModel = NoteModel(
                       title: title!,
                       subTitle: subTitle!,
