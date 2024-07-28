@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-const kFont = 'ConcertOne';
+//const kFont = 'ConcertOne';
 //const kFont = 'Rubik';
+const kFont = 'Inconsolata';
 
 const kIcon = 'assets/icons/brainstorming.png';
 
