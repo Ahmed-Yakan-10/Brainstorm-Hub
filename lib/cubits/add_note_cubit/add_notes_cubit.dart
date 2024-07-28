@@ -6,8 +6,8 @@ import 'package:hive/hive.dart';
 
 part 'add_notes_state.dart';
 
-class NotesCubit extends Cubit<NotesState> {
-  NotesCubit() : super(AddNotesInitial());
+class AddNotesCubit extends Cubit<NotesState> {
+  AddNotesCubit() : super(AddNotesInitial());
 
   addNote(NoteModel note) async {
     emit(AddNotesLoading());
