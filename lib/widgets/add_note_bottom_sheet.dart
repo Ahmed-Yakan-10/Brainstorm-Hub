@@ -1,4 +1,5 @@
 import 'package:brainstorm_hub/cubits/add_note_cubit/add_notes_cubit.dart';
+import 'package:brainstorm_hub/cubits/notes_cubit/notes_cubit.dart';
 import 'package:brainstorm_hub/models/note_model.dart';
 import 'package:brainstorm_hub/widgets/add_note_form.dart';
 import 'package:brainstorm_hub/widgets/custom_button.dart';
@@ -18,9 +19,9 @@ class AddNoteBottomSheet extends StatelessWidget {
       child: BlocConsumer<AddNotesCubit, AddNotesState>(
           listener: (context, state) {
         if (state is AddNotesFailure) {
-          print('failed ${state.errorMessage}');
         }
         if (state is AddNotesSuccess) {
+          BlocProvider.of<NotesCubit>(context).fetchAllNotes();
           Navigator.pop(context);
         }
       }, builder: (context, state) {
