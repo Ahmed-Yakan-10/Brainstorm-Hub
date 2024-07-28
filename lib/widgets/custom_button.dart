@@ -2,10 +2,11 @@ import 'package:brainstorm_hub/constants.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  CustomButton({super.key, required this.buttonName, required this.onTap});
+  const CustomButton({super.key, required this.onTap, this.isLoading = false});
 
-  String buttonName;
   final void Function()? onTap;
+
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +20,24 @@ class CustomButton extends StatelessWidget {
         height: 55,
         width: MediaQuery.of(context).size.width,
         child: Center(
-          child: Text(
-            buttonName,
-            style: const TextStyle(
-              fontFamily: kFont,
-              color: kSecondaryColor,
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          child: isLoading
+              ? const Center(
+                  child: SizedBox(
+                    height: 24,width: 24,
+                    child: CircularProgressIndicator(
+                      color: kSecondaryColor,
+                    ),
+                  ),
+                )
+              : const Text(
+                  'Add',
+                  style: const TextStyle(
+                    fontFamily: kFont,
+                    color: kSecondaryColor,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
         ),
       ),
     );
