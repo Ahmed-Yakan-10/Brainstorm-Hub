@@ -1,7 +1,5 @@
-import 'package:brainstorm_hub/models/note_model.dart';
-import 'package:flutter/material.dart';
-
-@immutablec
+part of 'notes_cubit.dart';
+@immutable
 abstract class NotesState {}
 
 class NotesInitial extends NotesState {}
